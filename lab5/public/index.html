@@ -1,0 +1,97 @@
+<html>
+    <body>
+        <h1>Pokedex Search</h1>
+        <h3>Search by name or Pokedex #</h3>
+        <script>
+            function readName(event){
+
+                event.preventDefault();
+
+                let element = document.querySelector("#name");
+                //console.log(element.value);
+
+                fetch("/name/" + element.value).then((Response) => {
+                    return Response.json();
+                }).then((ProcessedResponse) => {
+                    console.log(ProcessedResponse);
+                    let reporting = document.querySelector("#reportingArea");
+
+                    if(ProcessedResponse.error){
+                        reporting.innerHTML = "Sorry, that doesn't exist. We returned: " + ProcessedResponse.name + ".";
+                    } else{
+                        reporting.innerHTML = "The pokemon with that name has a Pokedex # of: " + ProcessedResponse.id + " and type(s): "+ ProcessedResponse.typeList + ".";
+                    }
+                });
+                //console.log("clicked!");
+            }
+
+
+            function readId(event){
+
+                event.preventDefault();
+
+                let element = document.querySelector("#score");
+                //console.log(element.value);
+
+                fetch("/id/" + element.value).then((Response) => {
+                    return Response.json();
+                }).then((ProcessedResponse) => {
+                    console.log(ProcessedResponse);
+                    let reporting = document.querySelector("#reportingArea");
+
+                    if(ProcessedResponse.error){
+                        reporting.innerHTML = "Sorry, that doesn't exist. We returned: " + ProcessedResponse.name + ".";
+                    } else{
+                        reporting.innerHTML = "The pokemon with that id has the name: "  + ProcessedResponse.name + " and type(s): "+ ProcessedResponse.typeList + ".";
+                    }
+                });
+                //console.log("clicked!");
+                }
+
+
+
+            // function createMovie(event){
+
+            //     event.preventDefault();
+
+            //     let name = document.querySelector("#movieName");
+            //     let score = document.querySelector("#movieScore");
+
+            //     fetch("/api/movies/" + name.value + "/" + score.value, {
+            //         "method": "post"
+            //     }).then((res) => {
+            //         return res.json();
+            //     }).then((processed) => {
+            //         console.log(processed);
+            //     });
+
+            // }
+
+
+            </script>
+            <h2> Name </h2>
+                <form onsubmit="readName(event)">
+                    <input id = "name" type="text">
+                    <button>click Me!</button>
+                </form>
+
+            <h2>Id</h2>
+                <form onsubmit="readId(event)">
+                    <input id = "score" type="text">
+                    <button>click Me!</button>
+                </form>
+
+                <!-- <h2> create movie </h2>
+                <form onsubmit="createMovie(event)">
+                    <h3>name</h3>
+                    <input id = "movieName" type="text">
+                    <h3>score</h3>
+                    <input id = "movieScore" type="text">
+
+                    <button>create</button>
+                </form> -->
+
+            <span id = "reportingArea"></span>
+
+    </body>
+</html>
