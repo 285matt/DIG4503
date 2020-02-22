@@ -17,14 +17,13 @@ App.get("/name/:name", (req,res)=>{
     
     pokeArray.forEach((value)=>{
         if(value.name.toLowerCase() == req.params.name){
-             let index = value.id - 1;
-             result = pokeArray[index];
+             result = value;
              console.log(chalk.green(result.name));
         }
     });
 
     if(result.error){
-        console.log(chalk.red(result.name));
+        console.log(chalk.red(req.params.name));
     }
     res.json(result);
 });
@@ -35,15 +34,14 @@ App.get("/id/:id", (req, res)=>{
     
     pokeArray.forEach((value)=>{
         if(value.id == req.params.id){
-             let index = value.id - 1;
-             result = pokeArray[index];
+             result = value;
              console.log(chalk.green(result.id));
         }
     });
 //debugging
     //console.log(result);
     if(result.error){
-        console.log(chalk.red(result.id));
+        console.log(chalk.red(req.params.id));
     }
     res.json(result);
 }); 
