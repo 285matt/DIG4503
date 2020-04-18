@@ -1,0 +1,42 @@
+.header{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    background-color: #ff624a;
+    border: 1px solid black;
+}
+
+.nav{
+    border-top: 1px solid black;
+    background-color:#fff2f0;
+    height: 55px;
+    text-align: center;
+}
+
+.link{
+    display: inline-block;
+    text-align: center;
+    width: 20%;
+    text-decoration: none;
+    background-color:#ff908a;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 2px 2px grey;
+}
+
+.textResponse{
+    width: 50%;
+    margin: auto;
+    font-size: 1.15em;
+    text-align: center;
+}
+
+.tableResponse{
+    width: 50;
+    margin: auto;
+    font-size: 1.15em;
+    padding: 10px;
+
+}
